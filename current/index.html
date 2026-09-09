@@ -1,0 +1,571 @@
+<title>सिंहगड भाग पत्रिका सप्टेंबर २०२६</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Tiro+Devanagari+Marathi:ital@0;1&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --backdrop-1:#7a2a18;
+    --backdrop-2:#3e140d;
+    --paper:#fbf1e2;
+    --paper-alt:#f3e2c8;
+    --ink:#2e1b12;
+    --ink-soft:#6b5540;
+    --saffron:#d9711f;
+    --saffron-deep:#a84e12;
+    --maroon:#7a1620;
+    --brass:#a9822e;
+    --rule:#c9a15c;
+    --quote-bg:#3a1013;
+    --quote-ink:#f6e9d9;
+    --shadow:rgba(40,18,8,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --backdrop-1:#1b0f0b;
+      --backdrop-2:#0c0705;
+      --paper:#241a14;
+      --paper-alt:#2f2219;
+      --ink:#f1e2cb;
+      --ink-soft:#c7af90;
+      --saffron:#f0873c;
+      --saffron-deep:#ffa35c;
+      --maroon:#e28791;
+      --brass:#d9b968;
+      --rule:#8a6a34;
+      --shadow:rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --backdrop-1:#1b0f0b;
+    --backdrop-2:#0c0705;
+    --paper:#241a14;
+    --paper-alt:#2f2219;
+    --ink:#f1e2cb;
+    --ink-soft:#c7af90;
+    --saffron:#f0873c;
+    --saffron-deep:#ffa35c;
+    --maroon:#e28791;
+    --brass:#d9b968;
+    --rule:#8a6a34;
+    --shadow:rgba(0,0,0,.55);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:
+      radial-gradient(ellipse at 50% -10%, var(--backdrop-1), var(--backdrop-2) 70%);
+    color:var(--ink);
+    font-family:'Tiro Devanagari Marathi','Noto Serif Devanagari',serif;
+    padding:clamp(1rem,4vw,3rem) clamp(.75rem,3vw,1.5rem);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+  }
+  h1,h2,h3{ text-wrap:balance; font-family:'Baloo 2','Noto Serif Devanagari',serif; }
+
+  .sheet{
+    width:100%;
+    max-width:760px;
+    height:auto;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    box-shadow:0 30px 60px -20px var(--shadow), 0 2px 0 var(--brass);
+    overflow:hidden;
+  }
+
+  /* ---------- toran / bunting ---------- */
+  .toran{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:2px;
+    padding:14px 6% 0;
+    border-top:3px solid var(--brass);
+    background:var(--paper-alt);
+  }
+  .pennant{
+    width:0;height:0;
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-top:13px solid var(--saffron);
+    flex:0 0 auto;
+  }
+  .pennant:nth-child(3n+2){ border-top-color:var(--maroon); }
+  .pennant:nth-child(3n+3){ border-top-color:var(--brass); }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    background:var(--paper-alt);
+    text-align:center;
+    padding:.5rem 1.5rem 1.75rem;
+    border-bottom:2px solid var(--rule);
+  }
+  .sunmark{ width:46px;height:46px;margin:.5rem auto .35rem; color:var(--saffron); }
+  .unit-eyebrow{
+    font-family:'Baloo 2',serif;
+    font-weight:700;
+    letter-spacing:.04em;
+    font-size:1.05rem;
+    color:var(--maroon);
+  }
+  .unit-sub{ font-size:1rem; color:var(--ink-soft); margin-top:.15rem; }
+  .masthead h1{
+    font-size:clamp(2rem,6vw,2.7rem);
+    font-weight:900;
+    color:var(--saffron-deep);
+    margin:.6rem 0 .5rem;
+    letter-spacing:.01em;
+  }
+  .issue-line{
+    display:inline-flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:.5em;
+    font-size:1.02rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:.5rem 1rem;
+  }
+  .issue-line span:not(:last-child)::after{ content:'•'; margin-left:.6em; color:var(--brass); }
+
+  main{ padding:2.25rem clamp(1.1rem,5vw,3rem) 1rem; }
+
+  section{ scroll-margin-top:1rem; }
+
+  .sec-head{
+    display:flex;
+    align-items:center;
+    gap:.65rem;
+    margin-bottom:1rem;
+  }
+  .sec-head svg{ width:28px;height:28px;flex:0 0 auto;color:var(--saffron-deep); }
+  .sec-head h2{
+    font-size:1.55rem;
+    font-weight:800;
+    color:var(--maroon);
+    margin:0;
+  }
+
+  p{ line-height:1.85; font-size:1.14rem; margin:0 0 1.05em; max-width:64ch; }
+  p:last-child{ margin-bottom:0; }
+
+  /* ---------- मनोगत ---------- */
+  .greeting{ font-weight:600; font-size:1.2rem; color:var(--maroon); }
+  .callout{
+    border-left:4px solid var(--saffron);
+    background:var(--paper-alt);
+    padding:1rem 1.25rem;
+    margin:1.4rem 0;
+    font-size:1.18rem;
+    color:var(--ink);
+    border-radius:0 4px 4px 0;
+  }
+  .signature{ margin-top:1.5rem; text-align:right; }
+  .signature .jai{ color:var(--saffron-deep); font-weight:700; font-size:1.15rem; display:block; margin-bottom:.9rem; text-align:left; }
+  .signature .name{ font-family:'Baloo 2',serif; font-weight:800; color:var(--maroon); font-size:1.2rem; }
+  .signature .role{ color:var(--ink-soft); font-size:1rem; }
+
+  /* ---------- सुभाषित ---------- */
+  .shloka-block{
+    background:var(--paper-alt);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    padding:1.5rem 1.5rem 1.3rem;
+    text-align:center;
+  }
+  .shloka{
+    font-size:1.28rem;
+    color:var(--maroon);
+    line-height:2;
+    font-weight:600;
+  }
+  .bhavarth{
+    text-align:left;
+    margin-top:1.1rem;
+    padding-top:1rem;
+    border-top:1px dashed var(--rule);
+  }
+  .bhavarth .label{
+    font-family:'Baloo 2',serif;
+    font-weight:700;
+    color:var(--saffron-deep);
+    font-size:1rem;
+    letter-spacing:.03em;
+  }
+
+  /* ---------- अमृतवचन ---------- */
+  .quote-panel{
+    background:var(--quote-bg);
+    color:var(--quote-ink);
+    border-radius:8px;
+    padding:1.6rem 1.6rem 1.3rem;
+    position:relative;
+  }
+  .quote-panel .quote-title{
+    font-family:'Baloo 2',serif;
+    font-weight:800;
+    font-size:1.15rem;
+    color:var(--brass);
+    margin-bottom:.6rem;
+  }
+  .quote-panel p{ font-size:1.16rem; line-height:1.9; color:var(--quote-ink); max-width:none; }
+  .quote-panel .attribution{
+    display:block;
+    text-align:right;
+    margin-top:1rem;
+    font-family:'Baloo 2',serif;
+    font-weight:700;
+    color:var(--brass);
+    font-size:1.02rem;
+  }
+
+  /* ---------- बोधकथा ---------- */
+  .moral{
+    margin-top:1.3rem;
+    border-left:4px solid var(--maroon);
+    background:var(--paper-alt);
+    padding:1rem 1.25rem;
+    border-radius:0 4px 4px 0;
+  }
+  .moral .label{
+    font-family:'Baloo 2',serif;
+    font-weight:700;
+    color:var(--maroon);
+    font-size:1rem;
+    margin-right:.4em;
+  }
+
+  /* ---------- दिनविशेष ---------- */
+  .datelist{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
+  .datelist li{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    background:var(--paper-alt);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    padding:.7rem .9rem;
+  }
+  .datebadge{
+    flex:0 0 auto;
+    width:2.6rem;height:2.6rem;
+    border-radius:50%;
+    background:var(--saffron);
+    color:#fff8ee;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo 2',serif;
+    font-weight:800;
+    font-size:1.05rem;
+    font-variant-numeric:tabular-nums;
+  }
+  .datelist .event{ font-size:1.08rem; line-height:1.5; }
+
+  /* ---------- पद्य ---------- */
+  .poem{ text-align:center; }
+  .poem .refrain{
+    color:var(--saffron-deep);
+    font-weight:600;
+    font-size:1.14rem;
+    line-height:1.8;
+    margin-bottom:1.3rem;
+    letter-spacing:.01em;
+  }
+  .poem .refrain .mark{ display:block; font-size:.85rem; color:var(--brass); margin-top:.2rem; }
+  .stanza{ margin-bottom:1.4rem; font-size:1.13rem; line-height:1.85; }
+  .stanza .num{ display:block; margin-top:.3rem; color:var(--brass); font-size:.9rem; }
+  .poem-credit{ margin-top:.5rem; font-size:.95rem; color:var(--ink-soft); font-style:italic; }
+  .listen-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+    margin-top:1.1rem;
+    padding:.5rem 1.1rem;
+    border:1.5px solid var(--saffron);
+    border-radius:999px;
+    color:var(--saffron-deep);
+    font-family:'Baloo 2',serif;
+    font-weight:700;
+    font-size:.98rem;
+    text-decoration:none;
+    background:var(--paper-alt);
+  }
+  .listen-link:hover{ background:var(--saffron); color:#fff8ee; }
+  .listen-link:focus-visible{ outline:2px solid var(--maroon); outline-offset:2px; }
+  .listen-link svg{ width:16px;height:16px;flex:0 0 auto; }
+
+  /* ---------- divider ---------- */
+  .divider{ display:flex; align-items:center; gap:.85rem; margin:2.6rem 0; }
+  .divider .line{ flex:1; height:1px; background:var(--rule); }
+  .divider .dot{ width:9px;height:9px; background:var(--brass); transform:rotate(45deg); flex:0 0 auto; }
+
+  footer{
+    background:var(--paper-alt);
+    border-top:2px solid var(--rule);
+    text-align:center;
+    padding:1.6rem 1.5rem 1.9rem;
+  }
+  footer .fname{ font-family:'Baloo 2',serif; font-weight:800; color:var(--maroon); font-size:1.1rem; }
+  footer .faddr{ color:var(--ink-soft); font-size:.98rem; margin-top:.25rem; }
+  footer .fdots{ margin-top:.9rem; color:var(--brass); letter-spacing:.5em; font-size:.8rem; }
+
+  @media (max-width:480px){
+    p, .stanza, .poem .refrain{ font-size:1.05rem; }
+    .sec-head h2{ font-size:1.35rem; }
+    .masthead h1{ font-size:1.7rem; }
+  }
+</style>
+
+<div class="sheet" lang="mr">
+
+  <div class="toran">
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+  </div>
+
+  <header class="masthead">
+    <svg class="sunmark" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="24" cy="24" r="8" fill="currentColor" stroke="none"/>
+      <g stroke-linecap="round">
+        <line x1="24" y1="2" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="46"/>
+        <line x1="2" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="46" y2="24"/>
+        <line x1="8" y1="8" x2="13" y2="13"/><line x1="35" y1="35" x2="40" y2="40"/>
+        <line x1="40" y1="8" x2="35" y2="13"/><line x1="13" y1="35" x2="8" y2="40"/>
+      </g>
+    </svg>
+    <div class="unit-eyebrow">राष्ट्रीय स्वयंसेवक संघ</div>
+    <div class="unit-sub">नांदेड नगर, सिंहगड भाग</div>
+    <h1>मासिक बौद्धिक पुस्तिका</h1>
+    <div class="issue-line">
+      <span>सप्टेंबर–ऑक्टोबर २०२६</span>
+      <span>श्रावण–भाद्रपद–आश्विन</span>
+      <span>शके १९४८</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- मनोगत -->
+    <section id="manogat">
+      <div class="sec-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20L15 9a2.5 2.5 0 0 0-3.5-3.5L2 15v5h5z"/><path d="M13.5 6.5l4 4"/><path d="M2 22l3.5-1.2"/></svg>
+        <h2>मनोगत</h2>
+      </div>
+
+      <p class="greeting">स्वयंसेवक बंधुनो सप्रेम नमस्कार!!!</p>
+
+      <p>सध्या आपण संघ शताब्दीचे जे आठ कार्यक्रम ठरले होते त्याच्या शेवटच्या व महत्वाच्या टप्प्यावर आहोत.</p>
+
+      <p>विजयादशमीच्या उत्सवापासून संघ शताब्दीचे कार्यक्रम चालू झाले. विजयादशमीच्या उत्सवाच्या निमित्ताने आपण सर्व स्वयंसेवक शक्ती एकत्रित केली. यामध्ये जुने स्वयंसेवक, सुप्त शक्ती, इतर क्षेत्रात काम करणारे यांना संपर्क करून जोडून घेतले. त्यामुळे विजयादशमीचा उत्सव मोठ्या संख्येने आणि उत्साहात संपन्न झाला.</p>
+
+      <p>नंतर या एकत्रित स्वयंसेवकाच्या शक्तीवर आपण गृहसंवादाच्या माध्यमातून घराघरात संपर्क केला व संघ व पंच परिवर्तनाचे मुद्दे समजावून सांगितले. यातून जी सज्जनशक्ती जोडली गेली त्यांना बरोबर घेऊन हिंदुसमेलन मोठ्या उत्साहात पार पाडले.</p>
+
+      <p>या सगळ्या कार्यक्रमाच्या माध्यमातून आपण समाजातील सर्व स्तरांपर्यंत संघाची भूमिका पोहचवली. नंतर प्रमुख जनसंवाद कार्यक्रमाच्या माध्यमातून समाजातील प्रतिष्ठीत लोकांना एकत्रित केले व संघ व पंचपरिवर्तनाचे विषयावर चर्चा केली. सामाजिक सद्‌भाव बैठकाच्या माध्यमातून सर्व ज्ञाती पर्यंत आपण पोहोचलो. युवा व बाल कार्य माध्यमातून आपण या वयोगटापर्यंत पण पोहोचत आहोत. वरील सर्व कार्यक्रमाच्या माध्यमातून आपण पूर्ण समाज ढवळून काढायचा प्रयत्न केला. आता शेवटचा व महत्वाचा कार्यक्रम हा कार्यविस्तार आहे.</p>
+
+      <p>शताब्दीच्या सर्व कार्यक्रमाची परिणीती म्हणजे, संघाच्या शाखेमध्ये वाढ. त्यासाठी कार्यविस्तार हा कार्यक्रम.</p>
+
+      <div class="callout">
+        आपल्याला २ ऑक्टोबर ते १० ऑक्टोबर या कालावधी मध्ये आपल्या शाखेच्या परिसरामध्ये जास्तीत जास्त शाखा लावायचा प्रयत्न करायचा आहे. आपल्या वस्तीमध्ये अशी एकही जागा राहता कामा नये की जेथे संघाची शाखा या कालावधीमध्ये लागली नाही. परिसरातील सगळी मैदाने, बागा, सोसायटी, कॉलनी, मंदिरे, जिथे जिथे शक्य असेल तिथे तिथे शाखा.
+      </div>
+
+      <p>या साठी प्रत्येक संघ स्वयंसेवकाने प्रयत्न करणे गरजेचे आहे. यासाठी प्रथम आपल्याला वस्तीस्तरावरील विस्तार या विषयावर ज्या बैठका होत आहेत त्याला आपण सर्वांनी उपस्थिती लावणे महत्त्वाचे व अनिवार्य आहे. या बैठकांमधुन आपल्याला विस्तार कार्यक्रमाची पूर्ण स्पष्टता येणार आहे. जो पर्यंत आपल्याला पूर्णपणे हा विषय समजत नाही तो पर्यंत आपण चांगल्या प्रकारे त्याचे क्रियान्वयन करू शकणार नाही.</p>
+
+      <p>रक्षाबंधनाचा उत्सव यामधील पहिला टप्पा आहे. रक्षासुत्र बांधताना आपल्याकडून विस्तार सप्ताहात जास्तीत जास्त वेळ देण्याची अपेक्षा आहे याचीपण जाणीव आपण एकमेकांना करून द्यायची आहे. पटावरील प्रत्येक स्वयंसेवकाच्या घरी हा विषय पोहोचेल व संघाशताब्दी मधील या महत्वाच्या विस्ताराच्या टप्प्यामध्ये सर्व स्वयंसेवक मोठ्या उत्साहाने सहभागी होतील याची मला खात्री आहे.</p>
+
+      <p>आपल्या सगळांच्या सहकार्याने आपण आपल्या सिंहगड भागात २ ऑक्टोबर ते १० ऑक्टोबर या कालावधीत मोठ्या संख्येने शाखा लावू असा मला विश्वास वाटतो.</p>
+
+      <div class="signature">
+        <span class="jai">जय श्रीराम</span>
+        <span class="role">आपलाच</span><br>
+        <span class="name">सचिन नागपुरे</span><br>
+        <span class="role">भाग संघचालक</span>
+      </div>
+    </section>
+
+    <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+    <!-- सुभाषित -->
+    <section id="subhashit">
+      <div class="sec-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 2 6 0 9-2-3-2-6 0-9z"/><path d="M12 12c3 0 6 1.3 8 3.5-3 .7-6-.2-8-2C10 15.3 7 16.2 4 15.5 6 13.3 9 12 12 12z"/><path d="M12 21v-9"/></svg>
+        <h2>सुभाषित</h2>
+      </div>
+      <div class="shloka-block">
+        <div class="shloka">
+          अमंत्रम् अक्षरं नास्ति, मूलमनौषध ।<br>
+          अयोग्य पुरुष: नास्ती, योजकस्तत्र दुर्लभ: ॥
+        </div>
+        <div class="bhavarth">
+          <span class="label">भावार्थ — </span>मंत्र मध्ये वापरले जाऊ शकत नाही असे एकही अक्षर नाही, ज्याचा औषधी उपयोग नाही असे एकही मूळ नाही; तद्वतच पूर्णत: अयोग्य अशी व्यक्ती नसते. मात्र व्यक्तीमधील गुण पारखून तिचा सदुपयोग करून घेणारा, म्हणजे योजक मात्र दुर्मिळ असतो.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+    <!-- अमृतवचन -->
+    <section id="amrutvachan">
+      <div class="sec-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 7.5 6 12a6 6 0 0 1-12 0c0-4.5 6-12 6-12z"/></svg>
+        <h2>अमृतवचन</h2>
+      </div>
+      <div class="quote-panel">
+        <div class="quote-title">संघकार्य ईश्वरी कार्य</div>
+        <p>आपल्या समाजातील प्रत्येक मनुष्याला जोपर्यंत श्रद्धा आणि विश्वासपूर्वक हिंदू राष्ट्राचा अनुभव येत नाही, तोपर्यंत हे कार्य मी वाढवीत राहीन, असा विचार आपल्या मनात दृढ झाला पाहिजे. संपूर्ण हिंदू समाज संघटित करणे, हे आपले ध्येय्य आहे. इतर सर्व गोष्टी, आपला परिवार, व्यवसाय इत्यादी गौण आहेत. संघाचे कार्य हे इश्वरी कार्य आहे. ते धुंद होऊन केले पाहीजे.</p>
+        <span class="attribution">— प. पू. श्री. गोळवलकर गुरुजी</span>
+      </div>
+    </section>
+
+    <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+    <!-- बोधकथा -->
+    <section id="bodhkatha">
+      <div class="sec-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6 4.5 9 4 12 5v14c-3-1-6-.5-8 .5z"/><path d="M20 5.5C18 4.5 15 4 12 5v14c3-1 6-.5 8 .5z"/></svg>
+        <h2>बोधकथा</h2>
+      </div>
+      <p>राजसूय यज्ञाचे वेळी भगवान श्रीकृष्णांनी युधिष्ठिर व दुर्योधन यांची परीक्षा घेतली. त्यांनी प्रथम दुर्योधनाला बोलावले व त्याला सांगितले की, "हस्तिनापूर मधे फिरुन जो अत्यंत सज्जन व्यक्ती दिसेल त्याला घेऊन ये." दुर्योधन दिवसभर शहरात फिरला व परत येऊन श्रीकृष्णाला म्हणाला की, "मला एकही असा गुणी, सज्जन माणूस दिसला नाही. प्रत्येकात काहीना काही वेगवेगळे दुर्गुण आहेतच." तेंव्हा श्रीकृष्णाने युधिष्ठिराला बोलाऊन सांगितले की, "शहरात फिरुन सर्वाधिक दुर्जन माणूस शोधून घेऊन ये." युधिष्ठिर पण सर्व शहरभर फिरला व परत येऊन श्रीकृष्णाला म्हणाला, "मी साऱ्या शहरात फिरलो पण कुणीही असा दुर्जन मिळाला नाही. प्रत्येकाजवळ काहीना काही चांगली गुणवत्ता आहेच." तेव्हा श्रीकृष्ण म्हणाले, "सज्जन व दुर्जन यांच्यात हाच मोठा फरक आहे. दुर्जन व्यक्तिला कोणी चांगला दिसतच नाही तर सज्जन व्यक्तिला कोणी वाईट दिसत नाही."</p>
+      <div class="moral"><span class="label">तात्पर्य —</span>प्रत्येक व्यक्तिजवळ काही न काही गुण, दोष, कौशल्ये असतातच. गरज असते ती फक्त त्याचा शोध घेणाऱ्या दृष्टीची. ज्याची जशी दृष्टी असेल तसा त्याला समोरचा माणूस दिसतो.</div>
+    </section>
+
+    <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+    <!-- दिनविशेष -->
+    <section id="dinvishesh">
+      <div class="sec-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="7.5" y1="3" x2="7.5" y2="6.5"/><line x1="16.5" y1="3" x2="16.5" y2="6.5"/></svg>
+        <h2>दिनविशेष</h2>
+      </div>
+      <ul class="datelist">
+        <li><span class="datebadge">4</span><span class="event">श्रीकृष्ण जन्माष्टमी</span></li>
+        <li><span class="datebadge">7</span><span class="event">उमाजी नाईक जयंती</span></li>
+        <li><span class="datebadge">8</span><span class="event">जैन संत सेना महाराज पुण्यतिथी</span></li>
+        <li><span class="datebadge">10</span><span class="event">पुण्यश्लोक अहिल्यादेवी होळकर पुण्यतिथी</span></li>
+        <li><span class="datebadge">14</span><span class="event">गणेश चतुर्थी</span></li>
+        <li><span class="datebadge">16</span><span class="event">गजानन महाराज शेगांव पुण्यतिथी</span></li>
+        <li><span class="datebadge">17</span><span class="event">मराठवाडा मुक्ती दिन, मा. प्रधानमंत्री नरेंद्र मोदी यांचा वाढदिवस</span></li>
+      </ul>
+    </section>
+
+    <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+    <!-- वैयक्तिक पद्य -->
+    <section id="vaiyaktik">
+      <div class="sec-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-3-1.5-6-4-6-8 0-3 2-5 4-6-1 2 0 4 2 4s3-2 2-4c2 1 4 3 4 6 0 4-3 6.5-6 8z"/></svg>
+        <h2>वैयक्तिक पद्य</h2>
+      </div>
+      <div class="poem">
+        <div class="refrain">
+          संस्कृती सबकी एक चिरंतन खून रगों मे हिंदु हैं<br>
+          विराट सागर समाज अपना हम सब इसके बिंदू हैं..
+          <span class="mark">॥ धृ ॥</span>
+        </div>
+
+        <div class="stanza">
+          राम कृष्ण गौतम की धरती, महावीर का ज्ञान यहां<br>
+          वाणी खंडन मंडन करती, शंकर चारों धाम यहां<br>
+          जितने दर्शन राहें उतनी, चिंतान का चैतन्य भरा<br>
+          पंथ खालसा गुरू पुत्रों की बलिदानी यह पुण्य धरा<br>
+          अक्षय वट अगणित शखाऐं, जड में जीवन हिंदु है..
+          <span class="num">॥ १ ॥</span>
+        </div>
+
+        <div class="stanza">
+          कोटी हृदय हैं भाव एक हैं, इसी भूमि पर जन्म लिए<br>
+          मातृभूमि यह कर्मभूमि यह, पुण्यभूमि हित मरे जिये<br>
+          हारे - जीते संघर्षों में, साथ लढे बलिदान हुए<br>
+          कालचक्र की मजबूरी में रिश्ते नाते बिखार गये<br>
+          एक बडा परिवार हमारा, पुरखे सब के हिंदु हैं..
+          <span class="num">॥ २ ॥</span>
+        </div>
+
+        <div class="stanza">
+          सबकी रक्षा धर्म करेगा, उसकी रक्षा आज करें<br>
+          वर्ण - भेद मत - भेद मिटा कर नव रचना निर्माण करें<br>
+          धर्म हमारा जग में अभिनव, अक्षय है अविनाशी हैं<br>
+          इसी कडी से जुडे हुए, युग युग से भारतवासी हैं<br>
+          थाह अथाह जहां की महिमा, गहरा जैसे सिंधु हैं..
+          <span class="num">॥ ३ ॥</span>
+        </div>
+
+        <div class="stanza">
+          हरिजन गिरिजनवासी बन के, नगर ग्राम सब साध चलें<br>
+          उंच नीच का भाव घटा कर, समता के सद्‌भाव बढें<br>
+          ऊपर दिखते भेद भले हों, जैसे वनमें में फूल खिले<br>
+          रंग बिरंगी मुस्कानों से, जीवन रस पर एक मिले<br>
+          संजीवनी रस अमृत पीकर, मृत्युंजय हम हिंदु है..
+          <span class="num">॥ ४ ॥</span>
+        </div>
+
+        <a class="listen-link" href="https://youtu.be/FKJoiQnrzNk?si=-A6VHYG7Eii6n7nY" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          गीत ऐका — YouTube
+        </a>
+      </div>
+    </section>
+
+    <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+    <!-- सांघिक पद्य -->
+    <section id="sanghik">
+      <div class="sec-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 21c-2-1-4-3-4-6 0-2 1.3-3.3 2.6-4-.6 1.3 0 2.6 1.3 2.6S7.5 12.3 6.9 11c1.3.7 2.6 2 2.6 4 0 3-2 5-3.5 6z"/>
+          <path d="M18 21c-2-1-4-3-4-6 0-2 1.3-3.3 2.6-4-.6 1.3 0 2.6 1.3 2.6S19.5 12.3 18.9 11c1.3.7 2.6 2 2.6 4 0 3-2 5-3.5 6z"/>
+          <path d="M12 20c-2.3-1.1-4.5-3.3-4.5-6.6 0-2.2 1.4-3.7 2.9-4.4-.7 1.4 0 2.9 1.6 2.9s2.3-1.5 1.6-2.9c1.5.7 2.9 2.2 2.9 4.4 0 3.3-2.2 5.5-4.5 6.6z"/>
+        </svg>
+        <h2>सांघिक पद्य</h2>
+      </div>
+      <div class="poem">
+        <div class="refrain">
+          देश जगाए-दोष मिटाए, नवशक्ति संचार करे ।<br>
+          वीरव्रती हुंकार भरें
+          <span class="mark">॥ धृ ॥</span>
+        </div>
+
+        <div class="stanza">
+          कभी जगत में सबसे उपर, था अपना यह अनुपम देश<br>
+          देता आया सबको पावन, वैभवमय मंगल संदेश<br>
+          ऋषि मुनियों की उस थातीपर, निशंक मन से ध्यान धरे
+          <span class="num">॥ १ ॥</span>
+        </div>
+        <div class="refrain" style="margin:-.6rem 0 1.3rem;">वीरव्रती हुंकार भरे <span class="mark" style="display:inline;margin:0 0 0 .3em;">॥ धृ ॥</span></div>
+
+        <div class="stanza">
+          समाज अपना बहुत बडा है, जाती, भाषा, पंथ अनेक<br>
+          विविध रुप है विविध रंग है, धर्म धारणा सबकी एक<br>
+          स्नेह भरा व्यवहार संवारें, समरस एकाकार वरें
+          <span class="num">॥ २ ॥</span>
+        </div>
+        <div class="refrain" style="margin:-.6rem 0 1.3rem;">वीरव्रती हुंकार भरें <span class="mark" style="display:inline;margin:0 0 0 .3em;">॥ धृ ॥</span></div>
+
+        <div class="stanza">
+          आज हमारा प्रण है पक्का, शुभ पौरुष प्रकटाएंगे<br>
+          कोई बन्धु अब ना टुटे, सबका स्वत्व जगाएंगे<br>
+          जय जय गुंजे भारत मा की, उसी के हितमे जिए मरे
+          <span class="num">॥ ३ ॥</span>
+        </div>
+        <div class="refrain" style="margin:-.6rem 0 1.3rem;">वीरव्रती हुंकार भरें <span class="mark" style="display:inline;margin:0 0 0 .3em;">॥ धृ ॥</span></div>
+
+        <a class="listen-link" href="https://drive.google.com/file/d/1E73VBOmSUmR52Dk8ehA6klnqzySQ9ITa/view?usp=share_link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          गीत ऐका — Recording
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="fname">राष्ट्रीय स्वयंसेवक संघ</div>
+    <div class="faddr">नांदेड नगर, सिंहगड भाग · सप्टेंबर–ऑक्टोबर २०२६</div>
+    <div class="fdots">॥ ❖ ॥</div>
+  </footer>
+
+</div>

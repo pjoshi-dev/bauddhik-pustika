@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>सिंहगड भाग — मासिक पुस्तिका संग्रह</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Tiro+Devanagari+Marathi:ital@0;1&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --backdrop-1:#7a2a18; --backdrop-2:#3e140d;
+    --paper:#fbf1e2; --paper-alt:#f3e2c8;
+    --ink:#2e1b12; --ink-soft:#6b5540;
+    --saffron:#d9711f; --saffron-deep:#a84e12;
+    --maroon:#7a1620; --brass:#a9822e; --rule:#c9a15c;
+    --shadow:rgba(40,18,8,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --backdrop-1:#1b0f0b; --backdrop-2:#0c0705;
+      --paper:#241a14; --paper-alt:#2f2219;
+      --ink:#f1e2cb; --ink-soft:#c7af90;
+      --saffron:#f0873c; --saffron-deep:#ffa35c;
+      --maroon:#e28791; --brass:#d9b968; --rule:#8a6a34;
+      --shadow:rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --backdrop-1:#1b0f0b; --backdrop-2:#0c0705;
+    --paper:#241a14; --paper-alt:#2f2219;
+    --ink:#f1e2cb; --ink-soft:#c7af90;
+    --saffron:#f0873c; --saffron-deep:#ffa35c;
+    --maroon:#e28791; --brass:#d9b968; --rule:#8a6a34;
+    --shadow:rgba(0,0,0,.55);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:radial-gradient(ellipse at 50% -10%, var(--backdrop-1), var(--backdrop-2) 70%);
+    color:var(--ink);
+    font-family:'Tiro Devanagari Marathi','Noto Serif Devanagari',serif;
+    padding:clamp(1rem,4vw,3rem) clamp(.75rem,3vw,1.5rem);
+    display:flex; justify-content:center; align-items:flex-start;
+  }
+  h1,h2{ font-family:'Baloo 2','Noto Serif Devanagari',serif; text-wrap:balance; }
+  .sheet{
+    width:100%; max-width:640px; height:auto;
+    background:var(--paper); border:1px solid var(--rule); border-radius:6px;
+    box-shadow:0 30px 60px -20px var(--shadow), 0 2px 0 var(--brass);
+    overflow:hidden;
+  }
+  .masthead{
+    background:var(--paper-alt); text-align:center;
+    padding:2rem 1.5rem 1.5rem; border-bottom:2px solid var(--rule);
+  }
+  .unit-eyebrow{ font-family:'Baloo 2',serif; font-weight:700; letter-spacing:.04em; font-size:1.05rem; color:var(--maroon); }
+  .unit-sub{ font-size:1rem; color:var(--ink-soft); margin-top:.15rem; }
+  .masthead h1{ font-size:clamp(1.7rem,6vw,2.2rem); font-weight:800; color:var(--saffron-deep); margin:.6rem 0 0; }
+
+  main{ padding:2rem clamp(1.1rem,5vw,2.5rem) 2.2rem; }
+
+  .current-card{
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    background:var(--quote-bg,#3a1013); color:#f6e9d9;
+    border-radius:8px; padding:1.25rem 1.4rem; margin-bottom:2rem;
+    text-decoration:none;
+  }
+  .current-card .label{ font-family:'Baloo 2',serif; font-weight:700; font-size:.95rem; color:var(--brass); display:block; }
+  .current-card .title{ font-size:1.25rem; font-weight:600; margin-top:.2rem; }
+  .current-card .arrow{ font-size:1.6rem; color:var(--brass); flex:0 0 auto; }
+
+  h2.archive-h{ font-size:1.2rem; font-weight:700; color:var(--maroon); margin:0 0 1rem; }
+
+  .issue-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
+  .issue-list a{
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    background:var(--paper-alt); border:1px solid var(--rule); border-radius:8px;
+    padding:.85rem 1.1rem; text-decoration:none; color:var(--ink);
+  }
+  .issue-list .name{ font-size:1.08rem; }
+  .issue-list .go{ color:var(--saffron-deep); font-weight:700; }
+
+  footer{ background:var(--paper-alt); border-top:2px solid var(--rule); text-align:center; padding:1.2rem 1.5rem; color:var(--ink-soft); font-size:.95rem; }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="masthead">
+      <div class="unit-eyebrow">राष्ट्रीय स्वयंसेवक संघ</div>
+      <div class="unit-sub">नांदेड नगर, सिंहगड भाग</div>
+      <h1>मासिक बौद्धिक पुस्तिका संग्रह</h1>
+    </header>
+
+    <main>
+      <a class="current-card" href="/current">
+        <span>
+          <span class="label">चालू अंक</span>
+          <span class="title">सप्टेंबर–ऑक्टोबर २०२६</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <h2 class="archive-h">मागील अंक</h2>
+      <ul class="issue-list">
+        <li><a href="/2026-09/"><span class="name">सप्टेंबर–ऑक्टोबर २०२६</span><span class="go">वाचा →</span></a></li>
+      </ul>
+    </main>
+
+    <footer>राष्ट्रीय स्वयंसेवक संघ · नांदेड नगर, सिंहगड भाग</footer>
+  </div>
+</body>
+</html>
