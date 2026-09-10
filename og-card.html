@@ -57,17 +57,15 @@
     margin:26px 0 20px;
     letter-spacing:.01em;
   }
-  .issue-line{
-    display:inline-flex;
+  .rule{
+    display:flex;
     align-items:center;
-    gap:16px;
-    font-size:28px;
-    color:#f6e9d9;
-    border-top:2px solid #c9a15c;
-    border-bottom:2px solid #c9a15c;
-    padding:12px 34px;
+    gap:18px;
+    width:420px;
+    margin:0 auto;
   }
-  .issue-line span:not(:last-child)::after{ content:'•'; margin-left:16px; color:#c9a15c; }
+  .rule .line{ flex:1; height:2px; background:#c9a15c; }
+  .rule .dot{ width:14px; height:14px; background:#c9a15c; transform:rotate(45deg); flex:0 0 auto; }
   .footer-line{
     position:absolute;
     bottom:40px; left:0; right:0;
@@ -102,10 +100,7 @@
     <div class="eyebrow">राष्ट्रीय स्वयंसेवक संघ</div>
     <div class="sub">नांदेड नगर, सिंहगड भाग</div>
     <div class="title">मासिक बौद्धिक पुस्तिका</div>
-    <div class="issue-line">
-      <span>सप्‍टेंबर–ऑक्टोबर २०२६</span>
-      <span>शके १९४८</span>
-    </div>
+    <div class="rule"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
   </div>
 
   <div class="footer-line">॥ जय श्रीराम ॥</div>

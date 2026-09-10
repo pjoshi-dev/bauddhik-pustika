@@ -8,11 +8,11 @@ Monthly bulletin pages for RSS Nanded Nagar, Singhad Bhag. Free static hosting, 
 BP/
 ├── index.html          ← archive/landing page, lists all issues
 ├── _redirects          ← Cloudflare Pages / Netlify rewrite rule for /current
+├── og-card.html         ← source for the social-share preview image (generic, reused every month)
+├── og-image.png         ← rendered 1200×630 image, shared by every issue's og:image tag
 ├── 2026-09/
 │   ├── index.html       ← the published page for that issue
-│   ├── source.md        ← the raw content it was built from
-│   ├── og-card.html      ← source for the social-share preview image (edit + re-render each month)
-│   └── og-image.png      ← rendered 1200×630 image referenced by the og:image meta tag
+│   └── source.md        ← the raw content it was built from
 ├── 2026-10/             ← next month, same shape
 │   ├── index.html
 │   └── source.md
@@ -32,12 +32,12 @@ Each issue gets its own dated folder (`YYYY-MM`, named after the issue's lead mo
    /current/      /2026-10/index.html   200
    ```
 4. If hosting on GitHub Pages (no rewrite support there — see below), also copy the new `index.html` into `current/index.html`, overwriting the old one.
-5. Duplicate `og-card.html` into the new folder, edit its issue-line text, and re-render it to `og-image.png` (see "Social-share (OG) image" below). Update the `og:image`/`og:url` meta tags in the new `index.html` (and `current/index.html`) to point at it.
+5. Add `og:title`/`og:description`/`og:image`/`og:url` meta tags to the new `index.html`'s `<head>` (copy an existing issue's, then update the title/description/url — `og:image` stays pointed at the shared root-level `/og-image.png`, no change needed there).
 6. Commit and push. Ask Claude to do steps 1–5 each month; it can build the page and update these files directly.
 
 ## Social-share (OG) image
 
-Each issue's `<head>` carries `og:title`, `og:description`, `og:image` and `og:url` meta tags so the link shows a proper preview card when shared (WhatsApp, Telegram, etc). The image is rendered from `og-card.html` (plain HTML/CSS, same brand colors/fonts as the bulletin) using a headless browser, since it has to ship as an actual PNG:
+Every page's `<head>` carries `og:title`, `og:description`, `og:image` and `og:url` meta tags so the link shows a proper preview card when shared (WhatsApp, Telegram, etc). `og:image` points at one shared, **generic** `/og-image.png` (no month/date on it) so it never needs updating month to month — it's rendered once from `og-card.html` (plain HTML/CSS, same brand colors/fonts as the bulletin) using a headless browser, since it has to ship as an actual PNG:
 
 ```
 npx playwright@latest install chromium   # first time only
@@ -45,16 +45,16 @@ node -e "
 import('playwright').then(async ({chromium}) => {
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: 1200, height: 630 } });
-  await p.goto('file://' + process.cwd() + '/2026-09/og-card.html');
+  await p.goto('file://' + process.cwd() + '/og-card.html');
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(500);
-  await p.screenshot({ path: '2026-09/og-image.png' });
+  await p.screenshot({ path: 'og-image.png' });
   await b.close();
 });
 "
 ```
 
-Ask Claude to do this each month — it can edit `og-card.html`'s text and re-render in one step.
+Only re-run this if the brand design itself changes (colors, fonts, wording) — not as part of the monthly workflow.
 
 ## Known font issue — missing "प्" before "ट"
 
