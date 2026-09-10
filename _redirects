@@ -2,5 +2,5 @@
 # Update the destination path below on the 1st of every month, then commit + push.
 # Status 200 = rewrite (URL bar keeps showing /current), not a redirect.
 
-/current       /2026-09/index.html   200
-/current/      /2026-09/index.html   200
+/current       /2026-09/   200
+/current/      /2026-09/   200

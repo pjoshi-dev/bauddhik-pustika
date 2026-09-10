@@ -1,13 +1,15 @@
 # सिंहगड भाग — मासिक बौद्धिक पुस्तिका
 
-Monthly bulletin pages for RSS Nanded Nagar, Singhad Bhag. Free static hosting, one permanent link per issue, plus a `/current` link that always points at the latest one.
+Monthly bulletin pages for RSS Nanded Nagar, Singhad Bhag. Free static hosting on Cloudflare Pages, one permanent link per issue, plus a `/current` link that always points at the latest one.
+
+Live at: **https://bauddhik-pustika.pages.dev**
 
 ## Folder structure
 
 ```
 BP/
-├── index.html          ← archive/landing page, lists all issues
-├── _redirects          ← Cloudflare Pages / Netlify rewrite rule for /current
+├── index.html          ← archive/landing page: "चालू अंक" card + list of every issue
+├── _redirects          ← Cloudflare Pages rewrite rule for /current
 ├── og-card.html         ← source for the social-share preview image (generic, reused every month)
 ├── og-image.png         ← rendered 1200×630 image, shared by every issue's og:image tag
 ├── 2026-09/
@@ -17,23 +19,67 @@ BP/
 │   ├── index.html
 │   └── source.md
 └── current/
-    └── index.html       ← fallback copy of the latest issue (only needed on GitHub Pages)
+    └── index.html       ← copy of the latest issue (redundant backup — see "How /current works")
 ```
 
 Each issue gets its own dated folder (`YYYY-MM`, named after the issue's lead month) so its link **never changes**, even after newer issues are published.
 
-## Publishing a new month
+## How `/current` works
 
-1. Create the new folder, e.g. `2026-10/`, with `source.md` (the raw content) and `index.html` (the built page).
-2. Add a row for it to the archive list in the root `index.html`.
-3. Update `_redirects` so both lines point at the new folder:
-   ```
-   /current       /2026-10/index.html   200
-   /current/      /2026-10/index.html   200
-   ```
-4. If hosting on GitHub Pages (no rewrite support there — see below), also copy the new `index.html` into `current/index.html`, overwriting the old one.
-5. Add `og:title`/`og:description`/`og:image`/`og:url` meta tags to the new `index.html`'s `<head>` (copy an existing issue's, then update the title/description/url — `og:image` stays pointed at the shared root-level `/og-image.png`, no change needed there).
-6. Commit and push. Ask Claude to do steps 1–5 each month; it can build the page and update these files directly.
+`_redirects` rewrites `/current` to the latest issue's folder with an HTTP 200 (a *rewrite*, not a redirect — the address bar keeps showing `/current`):
+
+```
+/current       /2026-09/   200
+/current/      /2026-09/   200
+```
+
+**The destination must be the directory path (`/2026-09/`), never the filename (`/2026-09/index.html`).** Pointing it at the filename was a real bug shipped and fixed in this repo (2026-09-10): Cloudflare Pages' own URL-normalization then 308-redirects `/2026-09/index.html` → `/2026-09/`, which makes `/current` visibly jump to `/2026-09/` in the address bar instead of quietly rewriting — the opposite of the intent.
+
+`current/index.html` (a plain copy of the latest issue) is kept only as a portability fallback in case this ever moves to a host without rewrite support (e.g. GitHub Pages). On the live Cloudflare Pages deployment it is not actually used — `_redirects` handles `/current` directly — but keep it in sync anyway, it costs nothing.
+
+## Publishing a new month — full checklist
+
+Given a new month's raw content (a `source.md`-shaped brief), do all of this in one pass:
+
+1. **Create `YYYY-MM/source.md`** with the raw content as given.
+2. **Build `YYYY-MM/index.html`**: copy the previous month's `index.html` as your starting point (this preserves the `<!doctype html>`/`<head>`/charset skeleton, the design system, and the OG meta tag block — never start from a bare fragment, see "Known gotchas" below). Then:
+   - Replace each section's content with the new month's text, keeping the existing section structure/markup (मनोगत, सुभाषित, अमृतवचन, बोधकथा, दिनविशेष, वैयक्तिक पद्य, सांघिक पद्य, etc. — match whatever sections the new source actually has).
+   - Update `<title>`, `og:title`, `og:description`, `og:url` to the new month. **Leave `og:image` pointed at `/og-image.png`** — it's shared and generic, never touch it per-issue.
+   - Update the masthead issue-line (month/date, Hindu months, Shaka year) and the footer address line's date.
+   - If the content includes YouTube/Google Drive links for songs/recordings, embed them inline with `<div class="embed-frame"><iframe ...></iframe></div>` plus a small fallback text link underneath (the pattern already used in `2026-09/index.html`) — don't just leave them as bare links.
+   - Check any new/unusual conjunct-heavy words for the font bug described below, and verify visually with a headless-browser screenshot before considering the page done (see "Known font issue").
+3. **Update root `index.html`**:
+   - Change the "चालू अंक" card's `<span class="title">` text to the new issue's title (its link stays `/current`, don't change the href).
+   - Add a new `<li>` at the **top** of `.issue-list` linking to `/YYYY-MM/` — keep all older rows below it.
+4. **Update `_redirects`**: change both destination lines to `/YYYY-MM/` (directory path — see the warning above).
+5. **Copy the new `YYYY-MM/index.html` over `current/index.html`** to keep the portability fallback in sync.
+6. **Commit and push** — Cloudflare Pages auto-deploys on push to `main`. Verify the live `/current`, `/YYYY-MM/`, and root URLs afterward.
+
+Nothing else needs to change month to month — no touching `og-card.html`, `og-image.png`, hosting config, or fonts/palette.
+
+## Known font issue — missing "प्" before "ट"
+
+**Tiro Devanagari Marathi** and **Baloo 2** (the two fonts used throughout these pages) both fail to render the प्+ट conjunct — "सप्टेंबर" silently loses its "प्" and reads as "सटेंबर". This is a bug in those specific fonts' rendering tables, not an encoding issue (Noto Serif Devanagari and plain system fonts render it fine). The fix is to insert a zero-width joiner (U+200D) right after the ् in प्, i.e. write सप्&#x200D;टेंबर (invisible in a text editor, but present) instead of सप्टेंबर. Every occurrence of "सप्टेंबर" in these pages already has this fix applied. **Check any new month's content for this or visually similar conjuncts** (not just सप्टेंबर — any प्+ट combination) and verify with a headless-browser screenshot before publishing:
+
+```
+node -e "
+import('playwright').then(async ({chromium}) => {
+  const b = await chromium.launch();
+  const p = await b.newPage({ viewport: { width: 900, height: 1400 } });
+  await p.goto('file://' + process.cwd() + '/YYYY-MM/index.html');
+  await p.evaluate(() => document.fonts.ready);
+  await p.waitForTimeout(500);
+  await p.screenshot({ path: '/tmp/check.png', fullPage: true });
+  await b.close();
+});
+"
+```
+(`npx playwright install chromium` once first, if not already installed.)
+
+## Other known gotchas
+
+- **Every page needs a real document skeleton.** These pages were originally drafted for Claude's Artifact preview tool, which auto-injects `<!doctype html>`, `<head>`, and `<meta charset="UTF-8">` — that safety net doesn't exist on real hosting. A page missing this renders Devanagari text as mojibake (browser has to guess the encoding). Always start a new month from a copy of an existing `YYYY-MM/index.html`, never a bare fragment.
+- **`body` needs `align-items:flex-start`.** The flex default (`stretch`) combined with `.sheet`'s `overflow:hidden` (used only to clip rounded corners) will silently clip page content below the first screenful and break scrolling.
 
 ## Social-share (OG) image
 
@@ -56,41 +102,21 @@ import('playwright').then(async ({chromium}) => {
 
 Only re-run this if the brand design itself changes (colors, fonts, wording) — not as part of the monthly workflow.
 
-## Known font issue — missing "प्" before "ट"
+## Hosting — Cloudflare Pages
 
-**Tiro Devanagari Marathi** and **Baloo 2** (the two fonts used throughout these pages) both fail to render the प्+ट conjunct — "सप्टेंबर" silently loses its "प्" and reads as "सटेंबर". This is a bug in those specific fonts' rendering tables, not an encoding issue (Noto Serif Devanagari and plain system fonts render it fine). The fix is to insert a zero-width joiner (U+200D) right after the ् in प्, i.e. write सप्&#x200D;टेंबर (invisible in a text editor, but present) instead of सप्टेंबर. Every occurrence of "सप्टेंबर" in these pages already has this fix applied. If a future month's content includes this or a visually similar word where a conjunct looks like it's dropping a letter, apply the same ZWJ fix and verify with a headless-browser screenshot before publishing.
+Live at `https://bauddhik-pustika.pages.dev`, deployed from the `pjoshi-dev/bauddhik-pustika` GitHub repo via Cloudflare Pages' git integration (auto-deploys every push to `main`, no build command, output directory = repo root). Free at this traffic level (~1000 MAU), no domain purchase needed.
 
-## Hosting — Cloudflare Pages (recommended)
+Cloudflare's dashboard now funnels new git-connected static sites through a unified "Workers & Pages" flow, and it's easy to accidentally end up with a **Worker with static assets** (`*.workers.dev`) instead of a classic **Pages** project (`*.pages.dev`) — the former does not honor `_redirects`, so `/current` (and even `/`) will 404. If a future redeploy ever ends up back on a `*.workers.dev` domain, that's the symptom to look for; recreate it via **Workers & Pages → Create application → Pages tab → Connect to Git** specifically.
 
-Free, no domain purchase needed, no cost at this traffic level, and supports the `_redirects` rewrite so `/current` never needs a duplicated copy.
+### Alternative — GitHub Pages (simpler, one caveat)
 
-1. Push this folder to a GitHub (or GitLab) repository.
-2. Go to the Cloudflare dashboard → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**, sign in, and pick this repository.
-3. Build settings: no build command, output directory = `/` (repo root).
-4. Deploy. You'll get a URL like `https://<project-name>.pages.dev`.
-5. Share links like `https://<project-name>.pages.dev/current` and `https://<project-name>.pages.dev/2026-09`.
+Also free, but GitHub Pages has no server-side rewrite, so `/current` can't transparently mirror another folder — that's what `current/index.html` is for.
 
-Every future push (new month's folder + updated `_redirects`) redeploys automatically.
-
-## Hosting — GitHub Pages (simpler, one caveat)
-
-Also free, but GitHub Pages has no server-side rewrite, so `/current` can't transparently mirror another folder — that's what the `current/` folder with its own copied `index.html` is for (step 4 above).
-
-1. Push this folder to a GitHub repository.
-2. Repo → **Settings** → **Pages** → Source: deploy from the `main` branch, root folder.
-3. Name the repo `<your-username>.github.io` so the site serves from the domain root (needed for the root-relative links like `/current` to resolve correctly). A regular project repo would serve under a `/reponame/` prefix instead, which breaks those links unless you adjust them.
-
-## Known issue — current deployment is Workers, not Pages
-
-The live deployment (`https://bauddhik-pustika.pages.dev`) was created through Cloudflare's unified "Workers & Pages" dashboard flow, and landed as a **Worker with static assets** rather than a classic **Pages** project. This matters because `_redirects` rewrites (what makes `/current` work) are a Pages-only feature — on the current deployment, `/current` and even `/` return 404. Two ways to resolve, still undecided as of this writing:
-
-1. Recreate the deployment as an actual Pages project (look for a distinct **Pages** tab/option in **Workers & Pages → Create application**) — gives a cleaner `<project>.pages.dev` URL too, with no account-name segment.
-2. Stay on Workers and implement the `/current` alias a different way (Workers static assets may need its own redirect mechanism rather than `_redirects` — needs checking against current Cloudflare docs).
-
-Until this is resolved, only direct issue links (e.g. `/2026-09/`) are reliable on the live site; don't share `/current` or the bare root URL yet.
+1. Repo → **Settings** → **Pages** → Source: deploy from the `main` branch, root folder.
+2. Name the repo `<your-username>.github.io` so the site serves from the domain root (needed for root-relative links like `/current` to resolve correctly) — a regular project repo serves under a `/reponame/` prefix instead, breaking those links.
 
 ## Notes
 
-- No domain purchase or hosting cost at ~1000 monthly users on either platform's free tier.
-- HTTPS is automatic on both.
+- No domain purchase or hosting cost at ~1000 monthly users on Cloudflare Pages' free tier.
+- HTTPS is automatic.
 - Keep `source.md` per issue — it's the editable source the page is built from.
