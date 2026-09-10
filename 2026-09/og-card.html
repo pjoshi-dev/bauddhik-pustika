@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ width:1200px; height:630px; overflow:hidden; }
+  body{
+    position:relative;
+    background:radial-gradient(ellipse at 50% -20%, #8a3119 0%, #3e140d 65%, #2a0d08 100%);
+    font-family:'Tiro Devanagari Marathi', serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pennants{
+    position:absolute;
+    top:46px; left:80px; right:80px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .pennant{
+    width:0;height:0;
+    border-left:13px solid transparent;
+    border-right:13px solid transparent;
+    border-top:20px solid #d9711f;
+  }
+  .pennant:nth-child(3n+2){ border-top-color:#7a1620; }
+  .pennant:nth-child(3n+3){ border-top-color:#c9a15c; }
+
+  .card{
+    position:relative;
+    text-align:center;
+    padding:0 90px;
+  }
+  .sun{ width:64px; height:64px; margin:0 auto 18px; color:#f0873c; }
+  .eyebrow{
+    font-family:'Baloo 2',serif;
+    font-weight:700;
+    letter-spacing:.04em;
+    font-size:30px;
+    color:#f0a868;
+  }
+  .sub{
+    font-size:26px;
+    color:#e9d3ba;
+    margin-top:6px;
+  }
+  .title{
+    font-family:'Baloo 2',serif;
+    font-weight:800;
+    font-size:74px;
+    color:#ffb46a;
+    margin:26px 0 20px;
+    letter-spacing:.01em;
+  }
+  .issue-line{
+    display:inline-flex;
+    align-items:center;
+    gap:16px;
+    font-size:28px;
+    color:#f6e9d9;
+    border-top:2px solid #c9a15c;
+    border-bottom:2px solid #c9a15c;
+    padding:12px 34px;
+  }
+  .issue-line span:not(:last-child)::after{ content:'•'; margin-left:16px; color:#c9a15c; }
+  .footer-line{
+    position:absolute;
+    bottom:40px; left:0; right:0;
+    text-align:center;
+    font-size:22px;
+    color:#c9a97a;
+    letter-spacing:.03em;
+  }
+</style>
+</head>
+<body>
+  <div class="pennants">
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+    <div class="pennant"></div><div class="pennant"></div><div class="pennant"></div>
+  </div>
+
+  <div class="card">
+    <svg class="sun" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="24" cy="24" r="8" fill="currentColor" stroke="none"/>
+      <g stroke-linecap="round">
+        <line x1="24" y1="2" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="46"/>
+        <line x1="2" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="46" y2="24"/>
+        <line x1="8" y1="8" x2="13" y2="13"/><line x1="35" y1="35" x2="40" y2="40"/>
+        <line x1="40" y1="8" x2="35" y2="13"/><line x1="13" y1="35" x2="8" y2="40"/>
+      </g>
+    </svg>
+    <div class="eyebrow">राष्ट्रीय स्वयंसेवक संघ</div>
+    <div class="sub">नांदेड नगर, सिंहगड भाग</div>
+    <div class="title">मासिक बौद्धिक पुस्तिका</div>
+    <div class="issue-line">
+      <span>सप्‍टेंबर–ऑक्टोबर २०२६</span>
+      <span>शके १९४८</span>
+    </div>
+  </div>
+
+  <div class="footer-line">॥ जय श्रीराम ॥</div>
+</body>
+</html>
