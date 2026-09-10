@@ -82,7 +82,7 @@ Also free, but GitHub Pages has no server-side rewrite, so `/current` can't tran
 
 ## Known issue — current deployment is Workers, not Pages
 
-The live deployment (`https://bauddhik-pustika.prafulla-b6a.workers.dev`) was created through Cloudflare's unified "Workers & Pages" dashboard flow, and landed as a **Worker with static assets** rather than a classic **Pages** project. This matters because `_redirects` rewrites (what makes `/current` work) are a Pages-only feature — on the current deployment, `/current` and even `/` return 404. Two ways to resolve, still undecided as of this writing:
+The live deployment (`https://bauddhik-pustika.pages.dev`) was created through Cloudflare's unified "Workers & Pages" dashboard flow, and landed as a **Worker with static assets** rather than a classic **Pages** project. This matters because `_redirects` rewrites (what makes `/current` work) are a Pages-only feature — on the current deployment, `/current` and even `/` return 404. Two ways to resolve, still undecided as of this writing:
 
 1. Recreate the deployment as an actual Pages project (look for a distinct **Pages** tab/option in **Workers & Pages → Create application**) — gives a cleaner `<project>.pages.dev` URL too, with no account-name segment.
 2. Stay on Workers and implement the `/current` alias a different way (Workers static assets may need its own redirect mechanism rather than `_redirects` — needs checking against current Cloudflare docs).
