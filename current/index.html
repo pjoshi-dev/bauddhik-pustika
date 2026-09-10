@@ -107,10 +107,10 @@
     font-family:'Baloo 2',serif;
     font-weight:700;
     letter-spacing:.04em;
-    font-size:1.05rem;
+    font-size:2.05rem;
     color:var(--maroon);
   }
-  .unit-sub{ font-size:1rem; color:var(--ink-soft); margin-top:.15rem; }
+  .unit-sub{ font-size:1.37rem; color:var(--ink-soft); margin-top:.15rem; }
   .masthead h1{
     font-size:clamp(2rem,6vw,2.7rem);
     font-weight:900;
@@ -296,6 +296,27 @@
   .listen-link:focus-visible{ outline:2px solid var(--maroon); outline-offset:2px; }
   .listen-link svg{ width:16px;height:16px;flex:0 0 auto; }
 
+  .embed-frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    margin-top:1.2rem;
+    border:1px solid var(--rule);
+    border-radius:8px;
+    overflow:hidden;
+    background:#000;
+  }
+  .embed-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .embed-fallback{
+    display:block;
+    margin-top:.6rem;
+    font-size:.92rem;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+  .embed-fallback a{ color:var(--saffron-deep); font-weight:600; text-decoration:none; }
+  .embed-fallback a:hover{ text-decoration:underline; }
+
   /* ---------- divider ---------- */
   .divider{ display:flex; align-items:center; gap:.85rem; margin:2.6rem 0; }
   .divider .line{ flex:1; height:1px; background:var(--rule); }
@@ -462,51 +483,43 @@
       </div>
       <div class="poem">
         <div class="refrain">
-          संस्कृती सबकी एक चिरंतन खून रगों मे हिंदु हैं<br>
-          विराट सागर समाज अपना हम सब इसके बिंदू हैं..
+          है वही पुरुषार्थी जो संघ पथ चलता रहे<br>
+          शील धीरज स्नेह के रथ बैठ कर बढ़ता रहे
           <span class="mark">॥ धृ ॥</span>
         </div>
 
         <div class="stanza">
-          राम कृष्ण गौतम की धरती, महावीर का ज्ञान यहां<br>
-          वाणी खंडन मंडन करती, शंकर चारों धाम यहां<br>
-          जितने दर्शन राहें उतनी, चिंतान का चैतन्य भरा<br>
-          पंथ खालसा गुरू पुत्रों की बलिदानी यह पुण्य धरा<br>
-          अक्षय वट अगणित शखाऐं, जड में जीवन हिंदु है..
+          सौख्य में फूले नहीं विपदा पड़े रोवे नहीं<br>
+          कंटकों के मार्ग में भी धैर्य बल खोवे नहीं<br>
+          शत्रु जिसका देख साहस हाथ बस मलता रहे
           <span class="num">॥ १ ॥</span>
         </div>
 
         <div class="stanza">
-          कोटी हृदय हैं भाव एक हैं, इसी भूमि पर जन्म लिए<br>
-          मातृभूमि यह कर्मभूमि यह, पुण्यभूमि हित मरे जिये<br>
-          हारे - जीते संघर्षों में, साथ लढे बलिदान हुए<br>
-          कालचक्र की मजबूरी में रिश्ते नाते बिखार गये<br>
-          एक बडा परिवार हमारा, पुरखे सब के हिंदु हैं..
+          चूमती है सफलताएँ चरण ऐसे वीर की<br>
+          भय कभी खाते ना जो चमकती शमशीर की<br>
+          संघ के उत्थान हित नित नव चयन करता रहे
           <span class="num">॥ २ ॥</span>
         </div>
 
         <div class="stanza">
-          सबकी रक्षा धर्म करेगा, उसकी रक्षा आज करें<br>
-          वर्ण - भेद मत - भेद मिटा कर नव रचना निर्माण करें<br>
-          धर्म हमारा जग में अभिनव, अक्षय है अविनाशी हैं<br>
-          इसी कडी से जुडे हुए, युग युग से भारतवासी हैं<br>
-          थाह अथाह जहां की महिमा, गहरा जैसे सिंधु हैं..
+          मान-औ-अपमान सब कुछ हिंदू हित स्वीकार हो<br>
+          हिंदू का हित हो जहाँ तो मौत भी स्वीकार हो<br>
+          है यह वटवृक्ष अपना फूलता फलता रहे
           <span class="num">॥ ३ ॥</span>
         </div>
 
         <div class="stanza">
-          हरिजन गिरिजनवासी बन के, नगर ग्राम सब साध चलें<br>
-          उंच नीच का भाव घटा कर, समता के सद्‌भाव बढें<br>
-          ऊपर दिखते भेद भले हों, जैसे वनमें में फूल खिले<br>
-          रंग बिरंगी मुस्कानों से, जीवन रस पर एक मिले<br>
-          संजीवनी रस अमृत पीकर, मृत्युंजय हम हिंदु है..
+          जागरण के गीत गाना ही सदा भाता जिसे<br>
+          काल का दुष्चक्र किंचित् छू नहीं पाता जिसे<br>
+          जो तिमिर को चीरता दीपक जला हरता रहे
           <span class="num">॥ ४ ॥</span>
         </div>
 
-        <a class="listen-link" href="https://youtu.be/FKJoiQnrzNk?si=-A6VHYG7Eii6n7nY" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          गीत ऐका — YouTube
-        </a>
+        <div class="embed-frame">
+          <iframe src="https://www.youtube.com/embed/FP9U4Zd_UAc" title="वैयक्तिक पद्य — गीत" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <span class="embed-fallback">व्हिडिओ दिसत नसल्यास <a href="https://www.youtube.com/watch?v=FP9U4Zd_UAc" target="_blank" rel="noopener noreferrer">येथे उघडा</a></span>
       </div>
     </section>
 
@@ -553,10 +566,10 @@
         </div>
         <div class="refrain" style="margin:-.6rem 0 1.3rem;">वीरव्रती हुंकार भरें <span class="mark" style="display:inline;margin:0 0 0 .3em;">॥ धृ ॥</span></div>
 
-        <a class="listen-link" href="https://drive.google.com/file/d/1E73VBOmSUmR52Dk8ehA6klnqzySQ9ITa/view?usp=share_link" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          गीत ऐका — Recording
-        </a>
+        <div class="embed-frame">
+          <iframe src="https://drive.google.com/file/d/1E73VBOmSUmR52Dk8ehA6klnqzySQ9ITa/preview" title="सांघिक पद्य — ध्वनिमुद्रण" loading="lazy" allow="autoplay"></iframe>
+        </div>
+        <span class="embed-fallback">ऐकू येत नसल्यास <a href="https://drive.google.com/file/d/1E73VBOmSUmR52Dk8ehA6klnqzySQ9ITa/view?usp=share_link" target="_blank" rel="noopener noreferrer">येथे उघडा</a></span>
       </div>
     </section>
 
