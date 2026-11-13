@@ -138,3 +138,6 @@ Link - https://youtu.be/afAPAPl9x2k?si=p58dcWqJNpiWdk1G
 तरुण व्यवसायी - ४८
 प्रौढ - ७९
 एकूण - १६६
+### उत्सव दृश्यफीत
+**विजयादशमी शस्त्रपूजन उत्सव प्रात्यक्षिके**
+https://youtu.be/iKDvB_rmEnM
